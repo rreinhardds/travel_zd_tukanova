@@ -1,0 +1,23 @@
+use Travel
+----запрос 1 вывести таблицу городов для поедки
+select distinct name_tours from basa_tours;
+-----запрос 2 вывести таблицу стран доступных для путешествия 
+select distinct name_country from country;
+----запрос 3 вывести имена путешественников 
+select distinct name from users, type_users where users.user_typeid=2
+-----запрос 4 вывести имена агентов
+select distinct name from users, type_users where users.user_typeid=1
+-----запрос 5 вывести путешественников и их выбранные туры
+select distinct name, name_country, name_tours
+from users
+join form on form.userid=users.userid
+join country on country.Countryid=form.Countryid
+join basa_tours on basa_tours.Toursid=form.Toursid
+where 
+users.user_typeid=2;
+--- запрос 6 вывести путешественников, их туры и агентов, которые их обслуживают
+select* from trip_coordination
+----запрос 7 вывести данные агентов
+select*from users where user_typeid='1'
+----запрос 8 вывести данные туристов
+select*from users where user_typeid='2'
